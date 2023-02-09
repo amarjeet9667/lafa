@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "207568024566",
+    "project_id": "lafa-1612b",
+    "storage_bucket": "lafa-1612b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207568024566:android:188ab08685297715efcdd7",
+        "android_client_info": {
+          "package_name": "com.example.fun_unlimited"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207568024566-frfk1aha7tqem29ootnekuid9u92c12q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fun_unlimited",
+            "certificate_hash": "e315a072ec00ff5a329ad783d1b53a31c0cf86ae"
+          }
+        },
+        {
+          "client_id": "207568024566-c68hhnughei63hndqk1jbls5e17ecql4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtJwczfmZd18xiI376MnnxidAeZ-sic84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207568024566-c68hhnughei63hndqk1jbls5e17ecql4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
