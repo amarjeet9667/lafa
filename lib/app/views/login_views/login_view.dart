@@ -22,7 +22,7 @@ class _LoginViewState extends State<LoginView> {
   void initState() {
     super.initState();
     videoController = VideoPlayerController.network(
-        'https://player.vimeo.com/external/577967684.sd.mp4?s=07e4cba9cd491c302b61eaa87a02f472c159da2d&profile_id=165&oauth2_token_id=57447761')
+        'https://cdn.pixabay.com/vimeo/694704491/Wood%20Anemones%20-%20112429.mp4?width=640&hash=db50159870c6ee938733c983040a20db19798898')
       ..initialize().then((value) {
         setState(() {
           isLoading = false;

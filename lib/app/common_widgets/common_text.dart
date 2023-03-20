@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fun_unlimited/app/common_widgets/common_colors.dart';
+import 'package:fun_unlimited/app/views/mainpage_views/profile_image_view/video_views_buttons/video_call_view/video_call_view.dart';
 import 'package:get/get.dart';
 
 class MyText extends StatelessWidget {
@@ -35,6 +36,8 @@ class MyContainer extends StatelessWidget {
   }
 }
 
+//This is Go Live button for (tv page) Nearby, Live, Multi, New and Follow page.
+
 class GoLiveButton extends StatelessWidget {
   final Widget golivebutton;
 
@@ -50,7 +53,9 @@ class GoLiveButton extends StatelessWidget {
         children: [
           Center(
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => const WebRTCView());
+              },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
                   purple,
@@ -86,7 +91,53 @@ class MyTextn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: const TextStyle(color: black, fontSize: 17),
+      style: const TextStyle(color: white, fontSize: 17),
+    );
+  }
+}
+
+//This is randomMatch button for (videopage) Nearby, Discover, Popular and New pages.
+
+class RandomMatch extends StatelessWidget {
+  final Widget button;
+  const RandomMatch({super.key, required this.button});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox.expand(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Get.to(() => const WebRTCView());
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  purple,
+                ),
+                fixedSize: MaterialStateProperty.all(
+                  Size(Get.width * 0.6, 40),
+                ),
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+              child: const Text(
+                "Random Match",
+                style: TextStyle(
+                  color: white,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

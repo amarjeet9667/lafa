@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:fun_unlimited/app/common_widgets/common_colors.dart';
 import 'package:fun_unlimited/app/common_widgets/common_text.dart';
 import 'package:fun_unlimited/app/controllers/mainpage_controller/video_controller.dart';
+import 'package:fun_unlimited/app/views/mainpage_views/profile_image_view/video_views_buttons/Audio_call/Audio_call_view.dart';
 import 'package:fun_unlimited/app/views/live_view.dart';
-import 'package:fun_unlimited/app/views/location_view/current_location_view.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import 'package:get/get.dart';
+
+import 'profile_image_view/video_views_buttons/card_button/card_button.dart';
 
 class VideoView extends GetView {
   @override
@@ -50,45 +52,51 @@ class VideoView extends GetView {
               Expanded(
                 child: TabBarView(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Stack(
                       children: [
-                        const Image(
-                          image: AssetImage("assets/waiting.png"),
-                          height: 200,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const Center(
-                          child: Text(
-                            "Turn on GPS to meet friends nearby",
-                            style: TextStyle(color: black, fontSize: 15),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Get.to(() => const CurrentLocationView());
-                          },
-                          child: Container(
-                            height: 40,
-                            width: Get.width * 0.4,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: purple),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Image(
+                              image: AssetImage("assets/gps.png"),
+                              height: 200,
                             ),
-                            child: const Center(
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            const Center(
                               child: Text(
-                                "Turn On",
-                                style: TextStyle(color: purple, fontSize: 20),
+                                "Turn on GPS to meet friends nearby",
+                                style: TextStyle(color: black, fontSize: 15),
                               ),
                             ),
-                          ),
-                        )
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                // Get.to(() => const CurrentLocationView());
+                              },
+                              child: Container(
+                                height: 40,
+                                width: Get.width * 0.4,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(color: purple),
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    "Turn On",
+                                    style:
+                                        TextStyle(color: purple, fontSize: 20),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const RandomMatch(button: Text(''))
                       ],
                     ),
 
@@ -104,66 +112,77 @@ class VideoView extends GetView {
 
                     // This is Popular Tab view
 
-                    GridView.count(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      crossAxisCount: 2,
-                      scrollDirection: Axis.vertical,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      children: List.generate(
-                        50,
-                        (index) {
-                          return InkWell(
-                            onTap: () {
-                              Get.to(() => const LiveView());
-                            },
-                            child: ClipRRect(
-                              clipBehavior: Clip.antiAlias,
-                              borderRadius: BorderRadius.circular(15),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: indigo,
-                                ),
-                                child: const Image(
-                                  image: NetworkImage(
-                                    "https://wallpaperaccess.com/full/2679427.jpg",
+                    Stack(
+                      children: [
+                        GridView.count(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          crossAxisCount: 2,
+                          scrollDirection: Axis.vertical,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                          children: List.generate(
+                            50,
+                            (index) {
+                              return InkWell(
+                                onTap: () {
+                                  Get.to(() => const LiveView());
+                                },
+                                child: ClipRRect(
+                                  clipBehavior: Clip.antiAlias,
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: const Image(
+                                      image: NetworkImage(
+                                        "https://i.pinimg.com/originals/fd/70/31/fd7031379854d7dd6490a137be03e3fc.jpg",
+                                      ),
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
-                                  fit: BoxFit.cover,
                                 ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
+                              );
+                            },
+                          ),
+                        ),
+                        const RandomMatch(button: Text(""))
+                      ],
                     ),
 
                     // This is New Tab view
 
-                    GridView.count(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      crossAxisCount: 2,
-                      scrollDirection: Axis.vertical,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      children: List.generate(30, (index) {
-                        return ClipRRect(
-                          clipBehavior: Clip.antiAlias,
-                          borderRadius: BorderRadius.circular(15),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                10,
+                    Stack(
+                      children: [
+                        GridView.count(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          crossAxisCount: 2,
+                          scrollDirection: Axis.vertical,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                          children: List.generate(30, (index) {
+                            return ClipRRect(
+                              clipBehavior: Clip.antiAlias,
+                              borderRadius: BorderRadius.circular(15),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                    10,
+                                  ),
+                                ),
+                                child: const Image(
+                                  image: NetworkImage(
+                                    "https://jaduikahaniya.com/wp-content/uploads/2020/10/beautiful-girls.webp",
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                              color: pink,
-                            ),
-                            child: const Image(
-                                image: NetworkImage(
-                                    "https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/drmrboss/phpJUlNJU.png")),
-                          ),
-                        );
-                      }),
-                    )
+                            );
+                          }),
+                        ),
+                        const RandomMatch(button: Text(""))
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -203,15 +222,20 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
           ? const Center(child: Text("Next Screen"))
           : Stack(
               children: [
-                Card(
-                  child: ClipRRect(
-                    clipBehavior: Clip.antiAlias,
-                    borderRadius: BorderRadius.circular(15),
-                    child: const Image(
-                      image: NetworkImage(
-                          "https://images4.alphacoders.com/678/678317.jpg"),
-                      height: double.infinity,
-                      fit: BoxFit.cover,
+                InkWell(
+                  onTap: () {
+                    Get.to(() => const CardButtonView());
+                  },
+                  child: Card(
+                    child: ClipRRect(
+                      clipBehavior: Clip.antiAlias,
+                      borderRadius: BorderRadius.circular(15),
+                      child: const Image(
+                        image: NetworkImage(
+                            "https://i.pinimg.com/originals/17/e5/d0/17e5d0456406a79f0c71fbaffe63e3a0.jpg"),
+                        height: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
@@ -250,91 +274,123 @@ class _HomeCardWidgetState extends State<HomeCardWidget> {
                             ),
                           ),
                         ),
-                        Container(
-                          height: 150,
-                          width: 130,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: white,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              ClipRRect(
-                                clipBehavior: Clip.antiAlias,
-                                borderRadius: BorderRadius.circular(18),
-                                child: const Image(
-                                  image: AssetImage("assets/pok.png"),
-                                  fit: BoxFit.cover,
-                                  height: 120,
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                            height: 150,
+                            width: 130,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: white,
+                            ),
+                            child: Stack(
+                              children: [
+                                ClipRRect(
+                                  clipBehavior: Clip.antiAlias,
+                                  borderRadius: BorderRadius.circular(18),
+                                  child: const Image(
+                                    image: NetworkImage(
+                                      "https://i.pinimg.com/originals/17/e5/d0/17e5d0456406a79f0c71fbaffe63e3a0.jpg",
+                                    ),
+                                    fit: BoxFit.cover,
+                                    height: double.infinity,
+                                  ),
                                 ),
-                              ),
-                              const CircleAvatar(
-                                backgroundColor: purple,
-                                radius: 14,
-                                child: Icon(
-                                  Icons.add,
-                                  size: 20,
-                                  color: white,
+                                SizedBox.expand(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: const [
+                                      CircleAvatar(
+                                        backgroundColor: purple,
+                                        radius: 14,
+                                        child: Icon(
+                                          Icons.add,
+                                          size: 20,
+                                          color: white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 100, horizontal: 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          const MyTextn(text: "English"),
-                          const MyTextn(text: "User Name"),
-                          Row(
-                            children: [
-                              const CircleAvatar(
-                                backgroundColor: white,
-                                radius: 15,
-                                child: Icon(
-                                  Icons.flag,
-                                  color: green,
+                SizedBox.expand(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 100),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            const MyTextn(text: "English"),
+                            const MyTextn(text: "Shirley Setia"),
+                            Row(
+                              children: [
+                                const CircleAvatar(
+                                  backgroundColor: white,
+                                  radius: 15,
+                                  child: Icon(
+                                    Icons.flag,
+                                    color: green,
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                height: 20,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: trans1,
+                                Container(
+                                  height: 20,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: trans1,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      Icon(
+                                        Icons.star,
+                                        size: 14,
+                                        color: purple,
+                                      ),
+                                      Text(
+                                        "  level",
+                                        style: TextStyle(
+                                            color: white, fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Icon(
-                                      Icons.star,
-                                      size: 14,
-                                      color: purple,
-                                    ),
-                                    Text(
-                                      "  level",
-                                      style:
-                                          TextStyle(color: white, fontSize: 12),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
+                          ],
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Get.to(() => const AudioCallView());
+                          },
+                          child: const CircleAvatar(
+                            backgroundColor: purple,
+                            radius: 25,
+                            child: Icon(
+                              Icons.call,
+                              color: white,
+                              size: 22,
+                            ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
+                const RandomMatch(button: Text(""))
               ],
             ),
     );

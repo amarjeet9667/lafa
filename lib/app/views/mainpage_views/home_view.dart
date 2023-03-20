@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fun_unlimited/app/common_widgets/common_colors.dart';
 import 'package:fun_unlimited/app/controllers/mainpage_controller/home_controller.dart';
+import 'package:fun_unlimited/app/views/lets_party_view/lets_party_view.dart';
 
 import 'package:get/get.dart';
 
@@ -48,7 +49,7 @@ class HomeView extends GetView {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Image(
-                          image: AssetImage("assets/waiting.png"),
+                          image: AssetImage("assets/gps.png"),
                           height: 200,
                         ),
                         const SizedBox(
@@ -97,11 +98,21 @@ class HomeView extends GetView {
                           scrollDirection: Axis.vertical,
                           children: List.generate(30, (index) {
                             return InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Get.to(() => const LetsPartyView());
+                              },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: indigo,
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: ClipRRect(
+                                  clipBehavior: Clip.antiAlias,
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: const Image(
+                                    image: NetworkImage(
+                                        "https://i.pinimg.com/originals/17/e5/d0/17e5d0456406a79f0c71fbaffe63e3a0.jpg"),
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             );

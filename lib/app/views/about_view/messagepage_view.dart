@@ -35,14 +35,14 @@ class MessagePageView extends GetView {
                     child: ListTile(
                       onTap: () {},
                       title: const Text(
-                        "Chamet Team",
+                        "Lafa Team",
                         style: TextStyle(
                           color: black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       leading: const CircleAvatar(
-                        backgroundColor: Spurple2,
+                        backgroundColor: grey,
                         radius: 30,
                         child: Icon(
                           FontAwesome.fire,
@@ -56,14 +56,14 @@ class MessagePageView extends GetView {
                     child: ListTile(
                       onTap: () {},
                       title: const Text(
-                        "Chamet Service",
+                        "Lafa Service",
                         style: TextStyle(
                           color: black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       leading: const CircleAvatar(
-                        backgroundColor: Spurple2,
+                        backgroundColor: grey,
                         radius: 30,
                         child: Icon(
                           FontAwesome.fire,
@@ -84,7 +84,7 @@ class MessagePageView extends GetView {
                         ),
                       ),
                       leading: const CircleAvatar(
-                        backgroundColor: Spurple1,
+                        backgroundColor: grey,
                         radius: 30,
                         child: Icon(
                           FontAwesome.fire,

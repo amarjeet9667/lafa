@@ -8,8 +8,8 @@ import 'package:fun_unlimited/app/common_widgets/common_colors.dart';
 import 'package:fun_unlimited/app/common_widgets/common_text.dart';
 import 'package:fun_unlimited/app/views/login_views/phone_login_view/dateofbirth_view.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class SelectGenderView extends StatefulWidget {
   const SelectGenderView({super.key});
@@ -23,31 +23,59 @@ class _SelectGenderViewState extends State<SelectGenderView> {
 
   String gender = "Male";
 
-  Future<bool> genders(String gender) async {
-    const url = "http://lafa.dousoftit.com/api/register/gender";
+  final Future<SharedPreferences> prefs = SharedPreferences.getInstance();
+
+  Future<void> selectGender() async {
+    const url = "https://lafa.dousoftit.com/api/gender1";
     final response = await http.post(Uri.parse(url), body: {
       "gender": gender,
     });
+
     log(response.statusCode.toString());
     if (response.statusCode == 200 || response.statusCode == 401) {
       final data = jsonDecode(response.body);
-      log(data.toString());
-      if (data["status"] == false) {
-        Get.snackbar("Error", data.toString());
 
-        return true;
+      if (data["statusCode"] == 200) {
+        var token = data["data"]["token"];
+        log(token);
+
+        final SharedPreferences pref = await prefs;
+        await pref.setString("token", token);
+        Get.to(() => const DOBView());
       }
-      return true;
     }
-    return false;
   }
 
-  savegender() async {
-    final response = await genders(gender);
+  // Future<bool> genders(String gender) async {
+  //   Get.dialog(
+  //     const Center(
+  //       child: CircularProgressIndicator(),
+  //     ),
+  //   );
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final userId = prefs.getInt('userId');
+  //   const url = "http://lafa.dousoftit.com/api/register/gender";
+  //   final response = await http.post(Uri.parse(url), body: {
+  //     "user_id": userId,
+  //     "gender": gender,
+  //   });
 
-    if (response == false) {
-      return;
-    }
+  //   log(response.statusCode.toString());
+  //   if (response.statusCode == 200 || response.statusCode == 401) {
+  //     final data = jsonDecode(response.body);
+  //     log(data.toString());
+  //     if (data["status"] == false) {
+  //       Get.snackbar("Error", data.toString());
+
+  //       return true;
+  //     }
+  //     return true;
+  //   }
+  //   return false;
+  // }
+
+  savegender() async {
+    await selectGender();
 
     await FirebaseFirestore.instance
         .collection("User")
@@ -147,9 +175,12 @@ class _SelectGenderViewState extends State<SelectGenderView> {
               ),
               InkWell(
                 onTap: () async {
-                  SharedPreferences pref =
-                      await SharedPreferences.getInstance();
-                  user = pref.getInt("userID");
+                  // await genders(gender).then((value) {
+                  //   if (value) {
+                  //     Get.to(() => const DOBView());
+                  //   }
+                  // });
+
                   savegender();
                 },
                 child: Container(

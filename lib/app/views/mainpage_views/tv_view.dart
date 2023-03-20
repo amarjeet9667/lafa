@@ -47,7 +47,7 @@ class TvView extends GetView {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Image(
-                          image: AssetImage("assets/waiting.png"),
+                          image: AssetImage("assets/gps.png"),
                           height: 200,
                         ),
                         const SizedBox(
@@ -91,20 +91,25 @@ class TvView extends GetView {
                           padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                           ),
-                          mainAxisSpacing: 10,
-                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 15,
+                          crossAxisSpacing: 15,
                           scrollDirection: Axis.vertical,
                           children: List.generate(30, (index) {
                             return InkWell(
                               onTap: () {},
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: indigo,
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
-                                child: const Image(
+                                child: ClipRRect(
+                                  clipBehavior: Clip.antiAlias,
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: const Image(
                                     image: NetworkImage(
-                                        "https://i.insider.com/520bf75aecad04a24d00000b?width=750&format=jpeg&auto=webp")),
+                                        "https://karnatakastateopenuniversity.in/wp-content/uploads/2022/09/Anushka-Sen-Wiki.jpg"),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
                             );
                           }),
@@ -132,12 +137,18 @@ class TvView extends GetView {
                               onTap: () {},
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(15),
                                   color: indigo,
                                 ),
-                                child: const Image(
+                                child: ClipRRect(
+                                  clipBehavior: Clip.antiAlias,
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: const Image(
                                     image: NetworkImage(
-                                        "https://i.insider.com/520bf75aecad04a24d00000b?width=750&format=jpeg&auto=webp")),
+                                        "https://haryanvicelebrities.com/wp-content/uploads/2020/10/anjali_raghav_b.jpg"),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
                             );
                           }),
@@ -163,12 +174,18 @@ class TvView extends GetView {
                               onTap: () {},
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(15),
                                   color: indigo,
                                 ),
-                                child: const Image(
+                                child: ClipRRect(
+                                  clipBehavior: Clip.antiAlias,
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: const Image(
                                     image: NetworkImage(
-                                        "https://i.insider.com/520bf75aecad04a24d00000b?width=750&format=jpeg&auto=webp")),
+                                        "https://i.pinimg.com/originals/17/e5/d0/17e5d0456406a79f0c71fbaffe63e3a0.jpg"),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
                             );
                           }),

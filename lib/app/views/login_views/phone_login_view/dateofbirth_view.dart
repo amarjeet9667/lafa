@@ -15,7 +15,40 @@ class DOBView extends StatefulWidget {
 
 class _DOBViewState extends State<DOBView> {
   String dateOfBirth = "";
+
+  // Future<bool> dob(dateOfBirth) async {
+  //   Get.dialog(
+  //     const Center(
+  //       child: CircularProgressIndicator(),
+  //     ),
+  //   );
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final userId = prefs.getInt('userId');
+  //   const url = "http://lafa.dousoftit.com/api/register/dob";
+  //   final response = await http.post(Uri.parse(url), body: {
+  //     "user_id": userId,
+  //     "dob": dateOfBirth,
+  //   });
+  //   log(response.statusCode.toString());
+  //   if (response.statusCode == 200 || response.statusCode == 401) {
+  //     final data = jsonDecode(response.body);
+
+  //     if (data["status"] == false) {
+  //       Get.snackbar("Error", data.toString());
+  //       return false;
+  //     }
+  //     return true;
+  //   }
+  //   return false;
+  // }
+
   saveDate() async {
+    // final response = await dob(dateOfBirth);
+
+    // if (response == false) {
+    //   return;
+    // }
+
     await FirebaseFirestore.instance
         .collection("User")
         .doc(FirebaseAuth.instance.currentUser!.uid)
@@ -79,6 +112,11 @@ class _DOBViewState extends State<DOBView> {
               ),
               InkWell(
                 onTap: () {
+                  // dob(dateOfBirth).then((value) {
+                  //   if (value) {
+                  //     Get.to(() => VideoView());
+                  //   }
+                  // });
                   saveDate();
                 },
                 child: Container(

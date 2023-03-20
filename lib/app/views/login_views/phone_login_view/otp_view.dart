@@ -85,6 +85,10 @@ class OTPView extends GetView<OTPControllr> {
               ElevatedButton(
                 onPressed: () {
                   if (controller.otpcontroller.text.length == 6) {
+                    // controller.login(controller.logins).then((value) {
+                    //   Get.to(() => OTPView());
+                    // });
+
                     controller.next();
                   }
                 },
